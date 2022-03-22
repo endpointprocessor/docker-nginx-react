@@ -2,8 +2,8 @@ sudo: required
 services:
   - docker
 
-before install:
+before_install:
   - docker build -t victorsunki/docker-nginx-react -f Dockerfile.dev .
 
 script:
-  - docker run victorsunki/docker-nginx-react npm run test -- --coverage
+  - docker run -e CI=true victorsunki/docker-nginx-react npm run test -- --coverage
